@@ -1,0 +1,88 @@
+@import "../../styles/index.scss";
+
+.container-loader {
+  @include flex(center, center);
+  @include position(absolute, 0, $right: null, $bottom: 0);
+  z-index: 1400;
+  background: rgb(239, 239, 239);
+  background-size: cover;
+  width: 100%;
+  opacity: 1;
+  min-height: 100vh;
+  text-align: center;
+  padding: 30px;
+}
+.loader-container {
+  @include flex(center, center, column);
+  left: 50%;
+  top: 50%;
+  max-width: 350px;
+  min-width: 300px;
+  border-radius: 5px;
+  min-height: 200px;
+  background-color: #fff;
+  padding: 15px;
+  @media (max-width: 575.98px) {
+    max-width: 200px;
+    min-width: 200px;
+  }
+  p {
+    color: #929292;
+    margin-bottom: 0;
+  }
+  .loader {
+    @include position(relative);
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    margin-bottom: 15px;
+
+    &::before,
+    &::after {
+      content: "";
+      @include position(absolute);
+    }
+  }
+  .sample-loader {
+    &::before,
+    &::after {
+      border-radius: 50%;
+      animation-duration: 1s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+    &::before {
+      width: 20px;
+      height: 20px;
+      top: calc(50% - 12px);
+      left: calc(50% - 10px);
+      border-bottom-right-radius: 0;
+      box-shadow: 0 0 0 2px $primary-color;
+      background: radial-gradient(transparent 0, transparent 3px, $primary-color 3px);
+      transform: rotate(45deg);
+      animation-name: sampleMapPin;
+    }
+    &::after {
+      width: 4px;
+      height: 2px;
+      opacity: 0.8;
+      top: 100%;
+      left: calc(50% - 2px);
+      background: rgb(48, 48, 48);
+      animation-name: sampleMapPinShadow;
+    }
+  }
+}
+
+@keyframes sampleMapPin {
+  50% {
+    transform: rotate(45deg) translate(-50%, -50%);
+  }
+}
+
+@keyframes sampleMapPinShadow {
+  50% {
+    transform: scaleX(3);
+    opacity: 0.2;
+  }
+}
