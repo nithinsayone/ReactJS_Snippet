@@ -11,7 +11,15 @@ import * as Utilities from '~shared/helpers/utilities';
 const Home = ({ actions, location }) => {
 
   const [loading, setLoading] = useState(true);
-  useEffect(checkForURL, [])
+  const [data, setData] = useState([]);
+  useEffect(checkForURL, []);
+  useEffect(getDataFromAPI,[]);
+
+  const getDataFromAPI = async() => {
+    actions.getDataFromAPI().then(()=>{
+      setData(home.dataState);
+    });
+  }
   
   const checkForURL = () => {
     if (location.search.includes('sample')) {
@@ -21,9 +29,20 @@ const Home = ({ actions, location }) => {
     setLoading(false);
   }
 
+  const renderDataList = () => {
+    return data.map((item) => (
+      <li key={item.id}>{item.name}</li>
+    ))
+  }
+
   if(loading)
     return <Loader/>;
-  return <Footer />;
+  return (
+    <>
+      {renderDataList()}
+      <Footer />
+    </>
+  );
 }
 
 Home.propTypes = {
@@ -33,7 +52,7 @@ Home.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    sample_reducer: state.sample_reducer,
+    home: state.home,
   };
 };
 
