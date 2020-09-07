@@ -2,8 +2,8 @@
  * All redux actions are wrapped inside the ActionCreators object
  */
 
-import * as sample from '../components/floorSwitcher/action';
+import * as home from '~/modules/home/action';
 
 export const ActionCreators = Object.assign({},
-  sample,
+  home
 );

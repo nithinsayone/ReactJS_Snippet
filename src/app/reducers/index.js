@@ -1,12 +1,12 @@
 import { combineReducers } from "redux";
-import sample from '../components/floorSwitcher/reducer';
+import home from '~/modules/home/reducer';
 
 /**
  * all available reducers are wrapped by the combine reducers function
  */
 
 const rootReducer = combineReducers({
-  sample,
+  home,
 });
 
 export default rootReducer;
