@@ -6,8 +6,7 @@ import storage from 'redux-persist/lib/storage';
 
 const persistConfig = {
     key: 'care-routes',
-    storage,
-    blacklist: ['points','floors']
+    storage
 };
 
 const persistedReducer = persistReducer(
