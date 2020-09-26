@@ -6,48 +6,45 @@ import '../style/index.scss';
 import PropTypes from 'prop-types';
 import Footer from '~shared/components/footer';
 import Loader from '~shared/components/loader';
-import * as Utilities from '~shared/helpers/utilities';
 
-const Home = ({ actions, location }) => {
+const Home = ({ actions, home }) => {
 
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-  useEffect(checkForURL, []);
-  useEffect(getDataFromAPI,[]);
+  useEffect(() => {
+    getDataFromAPI();
+  }, []);
 
-  const getDataFromAPI = async() => {
-    actions.getDataFromAPI().then(()=>{
+  const getDataFromAPI = async () => {
+    actions.getDataFromAPI().then(() => {
       setData(home.dataState);
+      setLoading(false);
     });
-  }
-  
-  const checkForURL = () => {
-    if (location.search.includes('sample')) {
-      let sample = Utilities.findURLParam('sample');
-      this.props.history.replace({ pathname: `/${sample}` });
-    }
-    setLoading(false);
-  }
+  };
 
   const renderDataList = () => {
-    return data.map((item) => (
-      <li key={item.id}>{item.name}</li>
-    ))
-  }
+    if (data && data.length)
+      return data.map((item) => (
+        <li key={item.id}>{item.name}</li>
+      ));
+    return null;
+  };
 
-  if(loading)
-    return <Loader/>;
+  if (loading)
+    return <Loader />;
   return (
     <>
       {renderDataList()}
+      <h2>HOME</h2>
       <Footer />
     </>
   );
-}
+};
 
 Home.propTypes = {
   actions: PropTypes.object,
-  location: PropTypes.object
+  location: PropTypes.object,
+  home: PropTypes.object,
 };
 
 const mapStateToProps = (state) => {

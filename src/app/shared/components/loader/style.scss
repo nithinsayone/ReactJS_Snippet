@@ -1,8 +1,4 @@
-@import "../../styles/index.scss";
-
 .container-loader {
-  @include flex(center, center);
-  @include position(absolute, 0, $right: null, $bottom: 0);
   z-index: 1400;
   background: rgb(239, 239, 239);
   background-size: cover;
@@ -13,7 +9,6 @@
   padding: 30px;
 }
 .loader-container {
-  @include flex(center, center, column);
   left: 50%;
   top: 50%;
   max-width: 350px;
@@ -31,7 +26,6 @@
     margin-bottom: 0;
   }
   .loader {
-    @include position(relative);
     width: 30px;
     height: 30px;
     margin: 0;
@@ -40,7 +34,6 @@
     &::before,
     &::after {
       content: "";
-      @include position(absolute);
     }
   }
   .sample-loader {
@@ -57,8 +50,8 @@
       top: calc(50% - 12px);
       left: calc(50% - 10px);
       border-bottom-right-radius: 0;
-      box-shadow: 0 0 0 2px $primary-color;
-      background: radial-gradient(transparent 0, transparent 3px, $primary-color 3px);
+      box-shadow: 0 0 0 2px #23e234;
+      background: radial-gradient(transparent 0, transparent 3px, #23e234 3px);
       transform: rotate(45deg);
       animation-name: sampleMapPin;
     }

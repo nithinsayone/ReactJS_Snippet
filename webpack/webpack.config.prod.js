@@ -13,7 +13,7 @@ module.exports = merge(common, {
     new Webpack.DefinePlugin({
       'KEY':JSON.stringify('routes--key'),
       'process.env.NODE_ENV': JSON.stringify('production'),
-      'SERVICE_URL': JSON.stringify('API END POINT'),
+      'API_END_POINT': JSON.stringify('https://swapi.dev/api/'),
       'VERSION': JSON.stringify(require("../package.json").version)
     }),
     new Webpack.optimize.ModuleConcatenationPlugin(),

@@ -1,10 +1,10 @@
 import axios from "axios";
 
-/*global SERVICE_URL */
+/*global API_END_POINT */
 /*eslint no-undef: "error"*/
 
 const axiosInstance = axios.create({
-  baseURL: SERVICE_URL,
+  baseURL: API_END_POINT,
   timeout: 2000,
   withCredentials: true,
 });

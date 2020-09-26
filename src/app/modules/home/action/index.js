@@ -23,5 +23,6 @@ export function getDataSuccess(res) {
 export function getDataError(error) {
   return ({
     type: 'API_ERROR',
+    payload: error
   });
 }

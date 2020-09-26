@@ -1,7 +1,4 @@
-@import '../../styles/index.scss';
-
 .sample-footer {
-    @include position(absolute,$bottom:130px);
     transition: all .05s linear;
     -webkit-transition: all .05s linear;
     width: 100%;
